@@ -23,6 +23,7 @@ export default function FacebookLoginComponent(props) {
     });
   };
   const responseFailureFacebook = (response) => {
+    console.log("Inside Failure Facebook response...");
     props.signInResponse(false, null);
     console.log(response);
   };

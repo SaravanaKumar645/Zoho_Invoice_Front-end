@@ -23,6 +23,7 @@ export default function GoogleLoginComponent(props) {
     });
   };
   const responseFailureGoogle = (response) => {
+    console.log("Inside Failure Google response...");
     console.log(response);
     props.signInResponse(false, null);
   };
