@@ -118,6 +118,9 @@
   background-color: #159aff;
   color: #fff;
 }
+.btn_blue:disabled {
+  cursor: not-allowed;
+}
 .forget_pass {
   display: block;
   text-align: center;
@@ -199,6 +202,9 @@
   font-size: 14px;
   overflow: hidden;
   line-height: 20px;
+}
+.socialMediaLoginHidden {
+  display: none;
 }
 .socialMediaLogin {
   display: flex;

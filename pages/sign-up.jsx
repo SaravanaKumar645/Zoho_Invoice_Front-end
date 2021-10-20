@@ -5,6 +5,7 @@ import Link from "next/link";
 import GoogleLoginComponent from "../Components/GoogleLogin";
 import FacebookLoginComponent from "../Components/FacebookLogin";
 import Router from "next/router";
+import axios from "axios";
 
 export const Signup = () => {
   const [success, setSuccess] = useState(false);
@@ -18,6 +19,42 @@ export const Signup = () => {
       console.log(data);
       Router.replace("/home");
     }
+  };
+  const formOnSubmit = (event) => {
+    event.preventDefault();
+    const fullName = event.target.fullname.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const companyName = event.target.companyName.value;
+    const location = event.target.location.value;
+    console.log(
+      `Values are : ${fullName}\n${email}\n${password}\n${companyName}\n${location}\n`
+    );
+    axios({
+      method: "POST",
+      url: "https://zoho-invoice-server.herokuapp.com/api/register-user",
+      data: { fullName, email, password, companyName, location },
+    }).then((response) => {
+      const { success } = response.data;
+      if (success) {
+        const {
+          accessToken,
+          refreshToken,
+          msg,
+          picture,
+          name,
+          email,
+          company,
+          gps,
+        } = response.data;
+        console.log(
+          `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n${company}\n${gps}`
+        );
+        setSuccess(true);
+        setData(response.data);
+        Router.replace("/home");
+      }
+    });
   };
   return (
     <div>
@@ -82,24 +119,27 @@ export const Signup = () => {
         <h1 className={styles.signup_header}>Get your free account!</h1>
         <div className={styles.signup_container}>
           <div className={styles.form}>
-            <form className={styles.signupform}>
+            <form className={styles.signupform} onSubmit={formOnSubmit}>
               <div className={styles.form_grp}>
                 <input
                   type="text"
                   className={styles.form_field}
-                  name="firstname"
+                  name="fullname"
                   placeholder="Full Name"
-                  autoFocus="true"
+                  autoFocus={true}
+                  required={true}
                 />
                 <input
                   type="email"
                   className={styles.form_field}
                   name="email"
+                  required={true}
                   autoComplete="on"
                   placeholder="Email Address"
                 ></input>
                 <input
                   type="password"
+                  required={true}
                   className={styles.form_field}
                   name="password"
                   autoComplete="on"
@@ -108,14 +148,17 @@ export const Signup = () => {
 
                 <input
                   type="text"
+                  required={true}
+                  name="companyName"
                   id="companyName"
                   className={styles.form_field}
                   placeholder="Company Name"
                 />
                 <select
                   className={styles.form_field}
-                  name="country_state"
+                  name="location"
                   id="country_state"
+                  required={true}
                   aria-invalid="false"
                 >
                   <option value="Andaman and Nicobar Islands">

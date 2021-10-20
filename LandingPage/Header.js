@@ -249,8 +249,10 @@ function Header() {
                     </a>
                     .
                   </label>
-                  <Link href="/sign_up">
-                    <button className={styles.btn1}>SIGN UP FOR FREE</button>
+                  <Link href="/sign-up">
+                    <button type="submit" className={styles.btn1}>
+                      SIGN UP FOR FREE
+                    </button>
                   </Link>
                 </div>
               </form>

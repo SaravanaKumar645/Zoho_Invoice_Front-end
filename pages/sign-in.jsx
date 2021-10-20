@@ -5,10 +5,13 @@ import Link from "next/link";
 import GoogleLoginComponent from "../Components/GoogleLogin";
 import FacebookLoginComponent from "../Components/FacebookLogin";
 import Router from "next/router";
+import axios from "axios";
 
 export const Signin = () => {
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState();
+  const [emailEntered, setEmailEntered] = useState(false);
+  const [email, setEmail] = useState("");
 
   const signInResponse = (success, data) => {
     console.log("Inside signIn response......");
@@ -19,13 +22,47 @@ export const Signin = () => {
       Router.replace("/home");
     }
   };
+  const formOnSubmit = (event) => {
+    event.preventDefault();
+    event.target.signin_btn.disabled = true;
+    const email = event.target.email_login.value;
+    const password = event.target.password_login.value;
+    console.log(`Values are : \n${email}\n${password}\n`);
+    axios({
+      method: "POST",
+      url: "https://zoho-invoice-server.herokuapp.com/api/login-user",
+      data: { email, password },
+    }).then((response) => {
+      event.target.signin_btn.disabled = true;
+      const { success } = response.data;
+      if (success) {
+        console.log(response.data);
+        const {
+          accessToken,
+          refreshToken,
+          msg,
+          picture,
+          name,
+          email,
+          company,
+          gps,
+        } = response.data;
+        console.log(
+          `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n${company}\n${gps}`
+        );
+        setSuccess(true);
+        setData(response.data);
+        Router.replace("/home");
+      }
+    });
+  };
   return (
     <div className={styles.background}>
       <div className={styles.signin_container}>
         <div className={styles.signin_box}>
           <div className={styles.zoho_logo}></div>
           <div className={styles.sign_in_div}>
-            <form className={styles.login}>
+            <form className={styles.login} onSubmit={formOnSubmit}>
               <div className={styles.signin_head}>
                 <span id="headtitle">Sign in</span>
                 <span id="trytitle"></span>
@@ -37,13 +74,38 @@ export const Signin = () => {
                     <input
                       placeholder="Email address or mobile number"
                       type="email"
-                      name="LOGIN_ID"
+                      name="email_login"
                       className={styles.textbox}
+                      required={true}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </span>
                 </div>
-                <button className={styles.btn_blue}>
-                  <span>Next</span>
+                {emailEntered && (
+                  <div className={styles.textbox_div}>
+                    <span>
+                      <input
+                        placeholder="Enter your password"
+                        type="password"
+                        name="password_login"
+                        className={styles.textbox}
+                        required={true}
+                      />
+                    </span>
+                  </div>
+                )}
+                <button
+                  disabled={false}
+                  className={styles.btn_blue}
+                  type={emailEntered ? "submit" : ""}
+                  name="signin_btn"
+                  onClick={() => {
+                    email.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+                      ? setEmailEntered(true)
+                      : "";
+                  }}
+                >
+                  <span>{emailEntered ? "Login" : "Next"}</span>
                 </button>
               </div>
               <div className={styles.forget_pass}>
@@ -51,7 +113,13 @@ export const Signin = () => {
               </div>
             </form>
             <div className={styles.line}></div>
-            <div className={styles.socialMediaLogin}>
+            <div
+              className={
+                emailEntered
+                  ? styles.socialMediaLoginHidden
+                  : styles.socialMediaLogin
+              }
+            >
               <p>Sign in using</p>
               <div className={styles.socialIcons}>
                 <GoogleLoginComponent signInResponse={signInResponse} />
