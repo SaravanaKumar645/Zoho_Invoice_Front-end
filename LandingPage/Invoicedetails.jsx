@@ -4,6 +4,8 @@ import { Button, Select, MenuItem } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import invoicestyles from "./Invoicedetails.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 const countries = [
   {
     name: "Global",
@@ -59,6 +61,7 @@ const countries = [
   },
 ];
 const Invoicedetails = () => {
+  const router = useRouter();
   const [country, setCountry] = React.useState(countries[0].name);
 
   const handleChange = (event) => {
@@ -84,88 +87,129 @@ const Invoicedetails = () => {
         </div>
 
         <div className={invoicestyles.btnClass}>
-          <Button id={invoicestyles.Button} variant="contained">
+          <Button
+            id={invoicestyles.Button}
+            variant="contained"
+            onClick={() => router.push("/sign-up")}
+          >
             ACCESS ZOHO INVOICE
           </Button>
         </div>
       </div>
       <div className={invoicestyles.content}>
         <div className={invoicestyles.imgClass}>
-          <Image
-            src="/Images/invoice-details/what-is-invoice.jpg"
-            width="300"
-            height="200"
-            alt="img"
-            layout="fixed"
-          />
-          <Image
-            src="/Images/invoice-details/what-is-timesheet.jpg"
-            width="300"
-            height="200"
-            alt="img"
-            layout="fixed"
-          />
+          <Link href="https://www.zoho.com/in/invoice/what-is-invoice/">
+            <Image
+              src="/Images/invoice-details/what-is-invoice.jpg"
+              width="300"
+              height="200"
+              alt="img"
+              layout="fixed"
+            />
+          </Link>
+          <Link href="https://www.zoho.com/in/invoice/what-is-a-timesheet/">
+            <Image
+              src="/Images/invoice-details/what-is-timesheet.jpg"
+              width="300"
+              height="200"
+              alt="img"
+              layout="fixed"
+            />
+          </Link>
         </div>
         <div className={invoicestyles.details}>
           <div className={invoicestyles.listClass}>
             <ul className={invoicestyles.ul}>
               <h3>Product</h3>
-              <li>
-                Features <div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Pricing - It's Free<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Mobile Invoicing<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Integrations<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Customer Testimonials<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Case Studies<div className={invoicestyles.hr}></div>
-              </li>
+              <Link href="https://www.zoho.com/in/invoice/create-send-invoices/">
+                <li>
+                  Features <div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/pricing/">
+                <li>
+                  Pricing - It's Free<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/mobile-apps/">
+                <li>
+                  Mobile Invoicing<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/addons/">
+                <li>
+                  Integrations<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/casestudy/customers-testimonials.html">
+                <li>
+                  Customer Testimonials<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/casestudy/case-study.html">
+                <li>
+                  Case Studies<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
             </ul>
             <ul className={invoicestyles.ul}>
               <h3>Resources</h3>
-              <li>
-                Business Guides<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Help Documentation<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                FAQs<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                What's New ?<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Release Notes<div className={invoicestyles.hr}></div>
-              </li>
+
+              <Link href="https://www.zoho.com/in/invoice/resources/">
+                <li>
+                  Business Guides<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/help/getting-started/welcome.html">
+                <li>
+                  Help Documentation<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/kb/invoices/">
+                <li>
+                  FAQs<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/whats-new.html">
+                <li>
+                  What&apos;s New ?<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/release-notes.html">
+                <li>
+                  Release Notes<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
             </ul>
             <ul className={invoicestyles.ul}>
               <h3>Quick Links</h3>
-              <li>
-                GDPR and Zoho Finance<div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Industries Best Suited For
-                <div className={invoicestyles.hr}></div>
-              </li>
-              <li>
-                Invoice Templates<div className={invoicestyles.hr}></div>
-              </li>
+              <Link href="https://www.zoho.com/financeplus/gdpr.html">
+                <li>
+                  GDPR and Zoho Finance<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/invoice-software-for-all-industries/">
+                <li>
+                  Industries Best Suited For
+                  <div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
+              <Link href="https://www.zoho.com/in/invoice/templates/">
+                <li>
+                  Invoice Templates<div className={invoicestyles.hr}></div>
+                </li>
+              </Link>
             </ul>
           </div>
           <div className={invoicestyles.socialandcountryWrapper}>
             <div className={invoicestyles.socialmedia}>
               <h3>Connect with us</h3>
-              <FaTwitterSquare className={invoicestyles.twitterIcon} />
-              <FaYoutubeSquare className={invoicestyles.ytIcon} />
+              <Link href="https://twitter.com/intent/follow?&screen_name=ZohoInvoice">
+                <FaTwitterSquare className={invoicestyles.twitterIcon} />
+              </Link>
+              <Link href="https://www.youtube.com/channel/UCHEOgQ5G6sd7jzCMnQ9dD9Q">
+                <FaYoutubeSquare className={invoicestyles.ytIcon} />
+              </Link>
             </div>
             <div className={invoicestyles.selectCountry}>
               <InputLabel style={{ color: "white", fontWeight: "600" }}>
