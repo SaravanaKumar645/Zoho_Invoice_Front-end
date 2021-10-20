@@ -6,7 +6,7 @@ import GoogleLoginComponent from "../Components/GoogleLogin";
 import FacebookLoginComponent from "../Components/FacebookLogin";
 import Router from "next/router";
 
-const Signup = () => {
+export const Signup = () => {
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState();
 
