@@ -14,7 +14,7 @@ const countries = [
   },
   {
     name: "Australia",
-    flag: "/images/country-flags/australia.png",
+    flag: "/public/images/country-flags/australia.png",
   },
   {
     name: "UAE",
@@ -68,7 +68,7 @@ const Invoicedetails = () => {
     <div className={invoicestyles.invoicedetails}>
       <div className={invoicestyles.header}>
         <img
-          src="/images/country-flags/green-globe.png"
+          src="/public/images/country-flags/green-globe.png"
           className={invoicestyles.greenGlobe}
         />
         <div className={invoicestyles.titleClass}>
@@ -91,13 +91,13 @@ const Invoicedetails = () => {
       <div className={invoicestyles.content}>
         <div className={invoicestyles.imgClass}>
           <img
-            src="/images/invoice-details/what-is-invoice.jpg"
+            src="/public/images/invoice-details/what-is-invoice.jpg"
             width="300"
             height="200"
             alt="img"
           />
           <img
-            src="/images/invoice-details/what-is-timesheet.jpg"
+            src="/public/images/invoice-details/what-is-timesheet.jpg"
             width="300"
             height="200"
             alt="img"

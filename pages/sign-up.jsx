@@ -14,7 +14,6 @@ export const Signup = () => {
     console.log("Inside signUp response......");
     if (success) {
       setSuccess(true);
-
       setData(data);
       console.log(data);
       Router.replace("/home");

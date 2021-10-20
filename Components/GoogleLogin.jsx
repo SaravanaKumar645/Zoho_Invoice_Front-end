@@ -24,7 +24,7 @@ export default function GoogleLoginComponent(props) {
   };
   const responseFailureGoogle = (response) => {
     console.log(response);
-    props.setSuccess(false);
+    props.signInResponse(false, null);
   };
 
   return (

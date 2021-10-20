@@ -23,7 +23,7 @@ export default function FacebookLoginComponent(props) {
     });
   };
   const responseFailureFacebook = (response) => {
-    props.setSuccess(false);
+    props.signInResponse(false, null);
     console.log(response);
   };
   return (
