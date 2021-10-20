@@ -10,7 +10,7 @@ const Otherapps = () => {
         <div className={linkstyles.zohoBooks}>
           <img
             className={linkstyles.zohoBooksimg}
-            src="/images/other-apps/zoho-books.png"
+            src="./Images/other-apps/zoho-books.png"
             width="45"
             height="45"
             alt="img"
@@ -22,7 +22,7 @@ const Otherapps = () => {
         </div>
         <div className={linkstyles.zohoSubscriptions}>
           <img
-            src="/images/other-apps/zoho-subscriptions.png"
+            src="./Images/other-apps/zoho-subscriptions.png"
             width="40"
             height="40"
             alt="img"
@@ -34,7 +34,7 @@ const Otherapps = () => {
         </div>
         <div className={linkstyles.zohoInventory}>
           <img
-            src="/images/other-apps/zoho-inventory.png"
+            src="./Images/other-apps/zoho-inventory.png"
             width="40"
             height="40"
             alt="img"
@@ -46,7 +46,7 @@ const Otherapps = () => {
         </div>
         <div className={linkstyles.zohoExpense}>
           <img
-            src="/images/other-apps/zoho-expense.png"
+            src="./Images/other-apps/zoho-expense.png"
             width="40"
             height="40"
             alt="img"
@@ -58,7 +58,7 @@ const Otherapps = () => {
         </div>
         <div className={linkstyles.zohoPayroll}>
           <img
-            src="/images/other-apps/zoho-payroll.png"
+            src="./Images/other-apps/zoho-payroll.png"
             width="40"
             height="40"
             alt="img"

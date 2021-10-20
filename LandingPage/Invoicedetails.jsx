@@ -3,58 +3,59 @@ import { FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa";
 import { Button, Select, MenuItem } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import invoicestyles from "./Invoicedetails.module.css";
+import Image from "next/image";
 const countries = [
   {
     name: "Global",
-    flag: "/images/country-flags/globe.png",
+    flag: "./Images/country-flags/globe.png",
   },
   {
     name: "United Kingdom",
-    flag: "/images/country-flags/united-kingdom.png",
+    flag: "./Images/country-flags/united-kingdom.png",
   },
   {
     name: "Australia",
-    flag: "/public/images/country-flags/australia.png",
+    flag: "./Images/country-flags/australia.png",
   },
   {
     name: "UAE",
-    flag: "/images/country-flags/united-arab-emirates.png",
+    flag: "./Images/country-flags/united-arab-emirates.png",
   },
   {
     name: "Bahrain",
-    flag: "/images/country-flags/bahrain.png",
+    flag: "./Images/country-flags/bahrain.png",
   },
   {
     name: "Qatar",
-    flag: "/images/country-flags/qatar.png",
+    flag: "./Images/country-flags/qatar.png",
   },
   {
     name: "UK",
-    flag: "/images/country-flags/united-kingdom.png",
+    flag: "./Images/country-flags/united-kingdom.png",
   },
   {
     name: "United States",
-    flag: "/images/country-flags/united-states.png",
+    flag: "./Images/country-flags/united-states.png",
   },
   {
     name: "Canada",
-    flag: "/images/country-flags/canada.png",
+    flag: "./Images/country-flags/canada.png",
   },
   {
     name: "India",
-    flag: "/images/country-flags/india.png",
+    flag: "./Images/country-flags/india.png",
   },
   {
     name: "Saudi Arabia",
-    flag: "/images/country-flags/saudi-arabia.png",
+    flag: "./Images/country-flags/saudi-arabia.png",
   },
   {
     name: "Kuwait",
-    flag: "/images/country-flags/kuwait.png",
+    flag: "./Images/country-flags/kuwait.png",
   },
   {
     name: "Oman",
-    flag: "/images/country-flags/oman.png",
+    flag: "./Images/country-flags/oman.png",
   },
 ];
 const Invoicedetails = () => {
@@ -68,7 +69,7 @@ const Invoicedetails = () => {
     <div className={invoicestyles.invoicedetails}>
       <div className={invoicestyles.header}>
         <img
-          src="/public/images/country-flags/green-globe.png"
+          src="./Images/country-flags/green-globe.png"
           className={invoicestyles.greenGlobe}
         />
         <div className={invoicestyles.titleClass}>
@@ -90,17 +91,19 @@ const Invoicedetails = () => {
       </div>
       <div className={invoicestyles.content}>
         <div className={invoicestyles.imgClass}>
-          <img
-            src="/public/images/invoice-details/what-is-invoice.jpg"
+          <Image
+            src="/Images/invoice-details/what-is-invoice.jpg"
             width="300"
             height="200"
             alt="img"
+            layout="fixed"
           />
-          <img
-            src="/public/images/invoice-details/what-is-timesheet.jpg"
+          <Image
+            src="/Images/invoice-details/what-is-timesheet.jpg"
             width="300"
             height="200"
             alt="img"
+            layout="fixed"
           />
         </div>
         <div className={invoicestyles.details}>
