@@ -77,7 +77,7 @@ export const Signin = () => {
       <div className={styles.signuplink}>
         Don&apos;t have a Zoho account?
         <a>
-          <Link href="/sign_up">Sign Up Now</Link>
+          <Link href="/sign-up">Sign Up Now</Link>
         </a>
       </div>
     </div>

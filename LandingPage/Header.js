@@ -46,10 +46,10 @@ function Header() {
         </ul>
         <div className={styles.icon_div}>
           <SearchIcon />
-          <Link href="/sign_in">
+          <Link href="/sign-in">
             <button className={styles.btn_signin}>SIGN IN</button>
           </Link>
-          <Link href="/sign_up">
+          <Link href="/sign-up">
             <button className={styles.btn_signup}>SIGN UP NOW</button>
           </Link>
         </div>

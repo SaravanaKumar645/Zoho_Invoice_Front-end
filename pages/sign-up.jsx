@@ -36,7 +36,7 @@ export const Signup = () => {
         <p className={styles.sign_in}>
           Already have a zoho account?
           <a className={styles.signin}>
-            <Link href="/sign_in">Sign In</Link>
+            <Link href="/sign-in">Sign In</Link>
           </a>
         </p>{" "}
       </header>
