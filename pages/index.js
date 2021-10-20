@@ -13,7 +13,7 @@ import State from "../LandingPage/State";
 export default function LandingPage() {
   useEffect(() => {
     axios
-      .get("http://localhost:4000/")
+      .get("https://zoho-invoice-server.herokuapp.com/")
       .then((res) => {
         console.log(res.data);
       })

@@ -9,7 +9,7 @@ export default function FacebookLoginComponent(props) {
     console.log("Inside Facebook Login.....");
     axios({
       method: "POST",
-      url: "http://localhost:4000/api/login-user/facebook",
+      url: "https://zoho-invoice-server.herokuapp.com/api/login-user/facebook",
       data: { accessToken: response.accessToken, userID: response.userID },
     }).then((response) => {
       const { success, accessToken, refreshToken, msg, picture, name, email } =

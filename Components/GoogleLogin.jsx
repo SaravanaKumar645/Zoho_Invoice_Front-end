@@ -8,7 +8,7 @@ export default function GoogleLoginComponent(props) {
     console.log("Inside Google Login.....");
     axios({
       method: "POST",
-      url: "http://localhost:4000/api/login-user/google",
+      url: "https://zoho-invoice-server.herokuapp.com/api/login-user/google",
       data: { tokenid: response.tokenId },
     }).then((response) => {
       const { success, accessToken, refreshToken, msg, picture, name, email } =
