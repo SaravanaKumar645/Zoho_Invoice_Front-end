@@ -30,6 +30,8 @@ export default function FacebookLoginComponent(props) {
   return (
     <div>
       <FacebookLogin
+        disableMobileRedirect={true}
+        redirectUri="https://zoho-invoice-clone.vercel.app/"
         appId={process.env.NEXT_PUBLIC_FB_ID}
         autoLoad={false}
         callback={responseSuccessFacebook}
