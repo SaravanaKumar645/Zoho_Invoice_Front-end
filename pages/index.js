@@ -9,17 +9,40 @@ import Footer from "../LandingPage/Footer";
 import Header from "../LandingPage/Header";
 import Otherapps from "../LandingPage/Otherapps";
 import State from "../LandingPage/State";
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
 export default function LandingPage() {
   useEffect(() => {
     axios
-      .get("https://zoho-invoice-server.herokuapp.com/")
+      .get("https://zoho-invoice-server.herokuapp.com/", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
       })
       .catch(function (error) {
         console.log(error);
       });
+    //console.log(cookies.get("myCat"));
+    axios
+      .get("https://zoho-invoice-server.herokuapp.com/api/authenticate-user", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    // axios
+    //   .get("http://localhost:4000/api/check-user", { withCredentials: true })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err);
+    //   });
   }, []);
   return (
     <>
