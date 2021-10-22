@@ -26,7 +26,7 @@ export default function LandingPage() {
     //   });
     //console.log(cookies.get("myCat"));
     axios
-      .get("https://zoho-invoice-server.herokuapp.com/api/authenticate-user", {
+      .get("https://zoho-invoice-server.vercel.app/api/authenticate-user", {
         withCredentials: true,
       })
       .then((res) => {
