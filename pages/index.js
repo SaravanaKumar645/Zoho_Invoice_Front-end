@@ -35,6 +35,16 @@ export default function LandingPage() {
       .catch(function (err) {
         console.log(err);
       });
+    axios
+      .get("https://zoho-invoice-server.vercel.app/api/check-user", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     // axios
     //   .get("http://localhost:4000/api/check-user", { withCredentials: true })
     //   .then((res) => {
