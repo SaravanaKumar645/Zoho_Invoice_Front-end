@@ -14,16 +14,16 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 export default function LandingPage() {
   useEffect(() => {
-    axios
-      .get("https://zoho-invoice-server.herokuapp.com/", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .get("http://localhost:4000", {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
     //console.log(cookies.get("myCat"));
     axios
       .get("https://zoho-invoice-server.herokuapp.com/api/authenticate-user", {
