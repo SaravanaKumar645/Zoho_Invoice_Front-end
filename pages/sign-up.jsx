@@ -40,6 +40,7 @@ export const Signup = () => {
       method: "POST",
       url: "https://zoho-invoice-server.vercel.app/api/register-user",
       data: { fullName, email, password, companyName, location },
+      withCredentials: true,
     }).then((response) => {
       const { success } = response.data;
       if (success) {

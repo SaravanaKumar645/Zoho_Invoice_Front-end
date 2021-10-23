@@ -10,6 +10,7 @@ export default function GoogleLoginComponent(props) {
       method: "POST",
       url: "https://zoho-invoice-server.vercel.app/api/login-user/google",
       data: { tokenid: response.tokenId },
+      withCredentials: true,
     }).then((response) => {
       const { success } = response.data;
       if (success) {

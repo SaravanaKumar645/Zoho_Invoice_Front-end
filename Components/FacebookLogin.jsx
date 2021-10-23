@@ -11,6 +11,7 @@ export default function FacebookLoginComponent(props) {
       method: "POST",
       url: "https://zoho-invoice-server.vercel.app/api/login-user/facebook",
       data: { accessToken: response.accessToken, userID: response.userID },
+      withCredentials: true,
     }).then((response) => {
       const { success } = response.data;
       if (success) {
