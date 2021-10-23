@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../LandingPage/sign_up.module.css";
 import Link from "next/link";
 import GoogleLoginComponent from "../Components/GoogleLogin";

@@ -5,7 +5,7 @@ import { BsFacebook } from "react-icons/bs";
 
 export default function FacebookLoginComponent(props) {
   const responseSuccessFacebook = (response) => {
-    //console.log(response);
+    console.log(response);
     console.log("Inside Facebook Login.....");
     axios({
       method: "POST",
