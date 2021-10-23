@@ -20,7 +20,12 @@ export default function organizationsetup() {
   const handleAddress = () => {
     setvisible(true);
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Router.replace("/");
+    }
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
