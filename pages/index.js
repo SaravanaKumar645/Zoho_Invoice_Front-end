@@ -29,8 +29,11 @@ export default function LandingPage() {
     //   .catch(function (err) {
     //     console.log(err);
     //   });
-    axios
-      .get("https://zoho-invoice-server.vercel.app/api/check-user", {})
+    axios;
+    axios({
+      method: "GET",
+      url: "https://zoho-invoice-server.vercel.app/api/check-user",
+    })
       .then((res) => {
         console.log(res.data);
         const token = cookies.get("accessToken", {

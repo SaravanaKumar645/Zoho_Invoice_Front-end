@@ -7,7 +7,7 @@ import languagesList from "../public/JSON/languagesList.json";
 import currencyList from "../public/JSON/currencyList.json";
 import timezoneList from "../public/JSON/timezoneList.json";
 import Router from "next/router";
-
+import axios from "axios";
 export function Organizationsetup() {
   const [selectedCountry, setSelectedCountry] = useState();
   const [selectedStates, setSelectedState] = useState();
