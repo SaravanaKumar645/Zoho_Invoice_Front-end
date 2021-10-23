@@ -23,7 +23,7 @@ export const Signin = () => {
       setSuccess(true);
       setData(data);
       console.log(data);
-      localStorage.setItem("token", accessToken);
+      localStorage.setItem("token", data.accessToken);
       Router.replace("/home");
     }
   };

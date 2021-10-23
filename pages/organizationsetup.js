@@ -51,7 +51,7 @@ export function Organizationsetup() {
         const { success, msg } = response.data;
         if (success) {
           const { companyDetails } = response.data;
-          localStorage.setItem("company", companyDetails);
+          localStorage.setItem("company", JSON.stringify(companyDetails));
           Router.replace("/home");
         } else {
           Router.reload();

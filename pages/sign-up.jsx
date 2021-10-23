@@ -19,7 +19,7 @@ export const Signup = () => {
   const signInResponse = (success, data) => {
     console.log("Inside signUp response......");
     if (success) {
-      localStorage.setItem("token", accessToken);
+      localStorage.setItem("token", data.accessToken);
       setSuccess(true);
       setData(data);
       console.log(data);
