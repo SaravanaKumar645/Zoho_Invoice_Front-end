@@ -9,9 +9,6 @@ import Link from "next/link";
 function Header() {
   return (
     <>
-      <head>
-        <title>Zoho Invoice</title>
-      </head>
       {/* <div className={`${styles["header"]} `}> */}
       <div className={styles.header}>
         <img
@@ -223,7 +220,7 @@ function Header() {
                 </div>
                 <div className={styles.terms}>
                   <input
-                    clasName={styles.checkbox}
+                    className={styles.checkbox}
                     type="checkbox"
                     name="tos"
                     value="false"

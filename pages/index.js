@@ -10,37 +10,37 @@ import Header from "../LandingPage/Header";
 import Otherapps from "../LandingPage/Otherapps";
 import State from "../LandingPage/State";
 import Cookies from "universal-cookie";
+import WithAuth from "../Components/WithAuth";
+import Router from "next/router";
 
 const cookies = new Cookies();
 export default function LandingPage() {
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      Router.replace("/home");
+    }
     // axios
-    //   .get("http://localhost:4000", {
+    //   .get("http://localhost:4000/api/authenticate-user", {
     //     withCredentials: true,
     //   })
     //   .then((res) => {
     //     console.log(res.data);
     //   })
-    //   .catch(function (error) {
-    //     console.log(error);
+    //   .catch(function (err) {
+    //     console.log(err);
     //   });
-    //console.log(cookies.get("myCat"));
-    axios
-      .get("https://zoho-invoice-server.vercel.app/api/authenticate-user", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
     axios
       .get("https://zoho-invoice-server.vercel.app/api/check-user", {
         withCredentials: true,
       })
       .then((res) => {
         console.log(res.data);
+        const token = cookies.get("accessToken", {
+          secure: true,
+          httpOnly: true,
+        });
+        console.log("COOKIE :::" + token);
       })
       .catch(function (err) {
         console.log(err);

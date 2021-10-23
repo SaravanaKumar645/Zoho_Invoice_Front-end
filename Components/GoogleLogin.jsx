@@ -4,23 +4,19 @@ import axios from "axios";
 
 export default function GoogleLoginComponent(props) {
   const responseSuccessGoogle = (response) => {
-    //console.log(response);
+    console.log(response);
     console.log("Inside Google Login.....");
-    axios({
-      method: "POST",
-      url: "https://zoho-invoice-server.herokuapp.com/api/login-user/google",
-      data: { tokenid: response.tokenId },
-    }).then((response) => {
-      const { success, accessToken, refreshToken, msg, picture, name, email } =
-        response.data;
-      if (success) {
-        // console.log(
-        //   `Access Token :${accessToken}\nRefresh Token :${refreshToken}\n}`
-        // );
-        props.signInResponse(success, response.data);
-        //console.log(response.data);
-      }
-    });
+    // axios({
+    //   method: "POST",
+    //   url: "https://zoho-invoice-server.vercel.app/api/login-user/google",
+    //   data: { tokenid: response.tokenId },
+    //   withCredentials: true,
+    // }).then((response) => {
+    //   const { success } = response.data;
+    //   if (success) {
+    //     props.signInResponse(success, response.data);
+    //   }
+    // });
   };
   const responseFailureGoogle = (response) => {
     console.log("Inside Failure Google response...");

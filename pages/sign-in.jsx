@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../LandingPage/sign_in.module.css";
 import Link from "next/link";
 import GoogleLoginComponent from "../Components/GoogleLogin";
@@ -12,7 +11,12 @@ export const Signin = () => {
   const [data, setData] = useState();
   const [emailEntered, setEmailEntered] = useState(false);
   const [email, setEmail] = useState("");
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      Router.replace("/home");
+    }
+  }, []);
   const signInResponse = (success, data) => {
     console.log("Inside signIn response......");
     if (success) {
@@ -30,8 +34,9 @@ export const Signin = () => {
     console.log(`Values are : \n${email}\n${password}\n`);
     axios({
       method: "POST",
-      url: "https://zoho-invoice-server.herokuapp.com/api/login-user",
+      url: "https://zoho-invoice-server.vercel.app/api/login-user",
       data: { email, password },
+      withCredentials: true,
     }).then((response) => {
       event.target.signin_btn.disabled = true;
       const { success } = response.data;
@@ -50,9 +55,10 @@ export const Signin = () => {
         console.log(
           `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n${company}\n${gps}`
         );
+        localStorage.setItem("token", accessToken);
         setSuccess(true);
         setData(response.data);
-        Router.replace("/home");
+        Router.replace("/organizationsetup");
       }
     });
   };

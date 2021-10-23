@@ -10,14 +10,20 @@ import axios from "axios";
 export const Signup = () => {
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState();
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      Router.replace("/home");
+    }
+  }, []);
   const signInResponse = (success, data) => {
     console.log("Inside signUp response......");
     if (success) {
+      localStorage.setItem("token", accessToken);
       setSuccess(true);
       setData(data);
       console.log(data);
-      Router.replace("/home");
+      Router.replace("/organizationsetup");
     }
   };
   const formOnSubmit = (event) => {
@@ -32,8 +38,9 @@ export const Signup = () => {
     );
     axios({
       method: "POST",
-      url: "https://zoho-invoice-server.herokuapp.com/api/register-user",
+      url: "https://zoho-invoice-server.vercel.app/api/register-user",
       data: { fullName, email, password, companyName, location },
+      withCredentials: true,
     }).then((response) => {
       const { success } = response.data;
       if (success) {
@@ -52,6 +59,7 @@ export const Signup = () => {
         );
         setSuccess(true);
         setData(response.data);
+        localStorage.setItem("token", accessToken);
         Router.replace("/home");
       }
     });
