@@ -10,7 +10,6 @@ import Header from "../LandingPage/Header";
 import Otherapps from "../LandingPage/Otherapps";
 import State from "../LandingPage/State";
 import Cookies from "universal-cookie";
-import WithAuth from "../Components/WithAuth";
 import Router from "next/router";
 
 const cookies = new Cookies();
@@ -31,9 +30,7 @@ export default function LandingPage() {
     //     console.log(err);
     //   });
     axios
-      .get("https://zoho-invoice-server.vercel.app/api/check-user", {
-        withCredentials: true,
-      })
+      .get("https://zoho-invoice-server.vercel.app/api/check-user", {})
       .then((res) => {
         console.log(res.data);
         const token = cookies.get("accessToken", {
