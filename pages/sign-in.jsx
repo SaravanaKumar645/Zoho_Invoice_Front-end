@@ -5,7 +5,6 @@ import GoogleLoginComponent from "../Components/GoogleLogin";
 import FacebookLoginComponent from "../Components/FacebookLogin";
 import Router from "next/router";
 import axios from "axios";
-
 export const Signin = () => {
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState();
@@ -24,7 +23,13 @@ export const Signin = () => {
       setData(data);
       console.log(data);
       localStorage.setItem("token", data.accessToken);
-      Router.replace("/home");
+      var companyDetails = JSON.parse(data.companyDetails);
+      if (companyDetails) {
+        localStorage.setItem("company", JSON.stringify(companyDetails));
+        Router.replace("/home");
+      } else {
+        Router.replace("/organizationsetup");
+      }
     }
   };
   const formOnSubmit = (event) => {
@@ -35,30 +40,29 @@ export const Signin = () => {
     console.log(`Values are : \n${email}\n${password}\n`);
     axios({
       method: "POST",
-      url: "https://zoho-invoice-server.herokuapp.com/api/login-user",
+      url: "https://zoho-invoice-server.vercel.app/api/login-user",
       data: { email, password },
     }).then((response) => {
       event.target.signin_btn.disabled = false;
       const { success } = response.data;
       if (success) {
         console.log(response.data);
-        const {
-          accessToken,
-          refreshToken,
-          msg,
-          picture,
-          name,
-          email,
-          company,
-          gps,
-        } = response.data;
-        console.log(
-          `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n${company}\n${gps}`
-        );
-        localStorage.setItem("token", accessToken);
         setSuccess(true);
         setData(response.data);
-        Router.replace("/organizationsetup");
+        const { accessToken, refreshToken, msg, picture, name, email } =
+          response.data;
+        console.log(
+          `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n\n`
+        );
+        var companyDetails = JSON.parse(response.data.companyDetails);
+        console.log(companyDetails);
+        localStorage.setItem("token", accessToken);
+        if (companyDetails) {
+          localStorage.setItem("company", JSON.stringify(companyDetails));
+          Router.replace("/home");
+        } else {
+          Router.replace("/organizationsetup");
+        }
       }
     });
   };

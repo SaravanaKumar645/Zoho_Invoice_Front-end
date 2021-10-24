@@ -11,14 +11,14 @@ import Otherapps from "../LandingPage/Otherapps";
 import State from "../LandingPage/State";
 import Cookies from "universal-cookie";
 import Router from "next/router";
-
 const cookies = new Cookies();
-export default function LandingPage() {
+export function LandingPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       Router.replace("/home");
     }
+    //localStorage.setItem("token", "whbbebeid3e ejwc ckjxbbxebdiebfebfekd");
     // axios
     //   .get("http://localhost:4000/api/authenticate-user", {
     //     withCredentials: true,
@@ -68,3 +68,5 @@ export default function LandingPage() {
     </>
   );
 }
+//export default WithAuth(LandingPage, "/");
+export default LandingPage;

@@ -8,6 +8,7 @@ import currencyList from "../public/JSON/currencyList.json";
 import timezoneList from "../public/JSON/timezoneList.json";
 import Router from "next/router";
 import axios from "axios";
+import WithAuth from "../Components/WithAuth";
 export function Organizationsetup() {
   const [selectedCountry, setSelectedCountry] = useState();
   const [selectedStates, setSelectedState] = useState();
@@ -16,14 +17,20 @@ export function Organizationsetup() {
   const [selectedTimeZone, setSelectedTimeZone] = useState();
   const [visible, setvisible] = useState(false);
   const [availableStates, setStates] = useState([]);
-
+  const [companyName, setCompanyName] = useState("");
   const handleAddress = () => {
     setvisible(true);
   };
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const company = localStorage.getItem("companyName");
     if (!token) {
       Router.replace("/");
+    }
+    if (company) {
+      setCompanyName(company);
+    } else {
+      Router.replace("/home");
     }
   }, []);
   const handleSubmit = (e) => {
@@ -42,6 +49,7 @@ export function Organizationsetup() {
     };
     console.log(JSON.stringify(formData));
     const token = localStorage.getItem("token");
+    console.log(token);
     if (token) {
       axios({
         method: "POST",
@@ -52,6 +60,7 @@ export function Organizationsetup() {
         if (success) {
           const { companyDetails } = response.data;
           localStorage.setItem("company", JSON.stringify(companyDetails));
+          localStorage.removeItem("companyName");
           Router.replace("/home");
         } else {
           Router.reload();
@@ -127,8 +136,10 @@ export function Organizationsetup() {
               Organization Name*
               <input
                 type="text"
+                value={companyName}
                 className={styles.input}
                 name="organization_name"
+                onChange={(e) => setCompanyName(e.target.value)}
                 required
                 autoFocus
               />

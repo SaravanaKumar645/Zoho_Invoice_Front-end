@@ -3,8 +3,10 @@ import Router from "next/router";
 const Home = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const company = JSON.parse(localStorage.getItem("company"));
+    console.log(company);
     if (!token) {
-      Router.replace("/");
+      Router.replace("/sign-in");
     }
   }, []);
   return (

@@ -6,10 +6,9 @@ import GoogleLoginComponent from "../Components/GoogleLogin";
 import FacebookLoginComponent from "../Components/FacebookLogin";
 import Router from "next/router";
 import axios from "axios";
-
 export const Signup = () => {
-  const [success, setSuccess] = useState(false);
-  const [data, setData] = useState();
+  // const [success, setSuccess] = useState(false);
+  // const [data, setData] = useState();
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -20,10 +19,14 @@ export const Signup = () => {
     console.log("Inside signUp response......");
     if (success) {
       localStorage.setItem("token", data.accessToken);
-      setSuccess(true);
-      setData(data);
+      var companyDetails = JSON.parse(data.companyDetails);
+      if (companyDetails) {
+        localStorage.setItem("company", JSON.stringify(companyDetails));
+        Router.replace("/home");
+      } else {
+        Router.replace("/organizationsetup");
+      }
       console.log(data);
-      Router.replace("/organizationsetup");
     }
   };
   const formOnSubmit = (event) => {
@@ -41,25 +44,28 @@ export const Signup = () => {
       url: "https://zoho-invoice-server.vercel.app/api/register-user",
       data: { fullName, email, password, companyName, location },
     }).then((response) => {
-      const { success } = response.data;
-      if (success) {
-        const {
-          accessToken,
-          refreshToken,
-          msg,
-          picture,
-          name,
-          email,
-          company,
-          gps,
-        } = response.data;
-        console.log(
-          `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n${company}\n${gps}`
-        );
-        setSuccess(true);
-        setData(response.data);
-        localStorage.setItem("token", accessToken);
-        Router.replace("/home");
+      if (response.status === 200) {
+        const { success } = response.data;
+        if (success) {
+          const {
+            accessToken,
+            refreshToken,
+            msg,
+            picture,
+            name,
+            email,
+            company,
+            gps,
+          } = response.data;
+          console.log(
+            `Success : ${success},....\n${msg} \n${email}\n${accessToken}\n${refreshToken}\n${name}\n${picture}\n${company}\n${gps}`
+          );
+          localStorage.setItem("token", accessToken);
+          localStorage.setItem("companyName", company);
+          Router.replace("/organizationsetup");
+        }
+      } else {
+        return null;
       }
     });
   };
