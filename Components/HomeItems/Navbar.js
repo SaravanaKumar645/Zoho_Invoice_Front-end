@@ -47,10 +47,12 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <a>
-              <FontAwesomeIcon className={styles.icon} icon={faBriefcase} />
-              Items{" "}
-            </a>
+            <Link href="/home/items">
+              <a>
+                <FontAwesomeIcon className={styles.icon} icon={faBriefcase} />
+                Items{" "}
+              </a>
+            </Link>
           </li>
           <br />
           <li>
