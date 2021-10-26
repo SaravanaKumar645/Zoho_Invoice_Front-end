@@ -29,7 +29,7 @@ export function Organizationsetup() {
     if (company) {
       setCompanyName(company);
     } else {
-      Router.replace("/home/dashboard");
+      Router.replace("/home/dashboard").then((result) => Router.reload());
     }
   }, []);
   const handleSubmit = (e) => {
@@ -60,7 +60,7 @@ export function Organizationsetup() {
           const { companyDetails } = response.data;
           localStorage.setItem("company", JSON.stringify(companyDetails));
           localStorage.removeItem("companyName");
-          Router.replace("/home");
+          Router.replace("/home/dashboard").then((result) => Router.reload());
         } else {
           Router.reload();
           alert(msg);
@@ -68,7 +68,7 @@ export function Organizationsetup() {
       });
     } else {
       alert("Error occured ! Login Again ");
-      Router.replace("/sign-in");
+      Router.replace("/sign-in").then((result) => Router.reload());
     }
   };
   return (

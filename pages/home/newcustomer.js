@@ -11,7 +11,7 @@ export default function NewCustomer() {
     const company = JSON.parse(localStorage.getItem("company"));
     console.log(company);
     if (!token) {
-      Router.replace("/sign-in");
+      Router.replace("/sign-in").then((result) => Router.reload());
     }
   }, []);
   const [toggle, settoggle] = useState(1);

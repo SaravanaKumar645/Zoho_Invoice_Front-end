@@ -11,7 +11,7 @@ export default function Home() {
     const company = JSON.parse(localStorage.getItem("company"));
     console.log(company);
     if (!token) {
-      Router.replace("/sign-in");
+      Router.replace("/sign-in").then((result) => Router.reload());
     }
   }, []);
   return (
