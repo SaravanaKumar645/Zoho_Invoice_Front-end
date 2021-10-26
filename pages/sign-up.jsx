@@ -12,7 +12,7 @@ export const Signup = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      Router.replace("/home");
+      Router.replace("/home/dashboard");
     }
   }, []);
   const signInResponse = (success, data) => {
@@ -22,7 +22,7 @@ export const Signup = () => {
       var companyDetails = JSON.parse(data.companyDetails);
       if (companyDetails) {
         localStorage.setItem("company", JSON.stringify(companyDetails));
-        Router.replace("/home");
+        Router.replace("/home/dashboard");
       } else {
         Router.replace("/organizationsetup");
       }

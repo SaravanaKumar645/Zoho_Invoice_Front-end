@@ -8,7 +8,6 @@ import currencyList from "../public/JSON/currencyList.json";
 import timezoneList from "../public/JSON/timezoneList.json";
 import Router from "next/router";
 import axios from "axios";
-import WithAuth from "../Components/WithAuth";
 export function Organizationsetup() {
   const [selectedCountry, setSelectedCountry] = useState();
   const [selectedStates, setSelectedState] = useState();
@@ -30,7 +29,7 @@ export function Organizationsetup() {
     if (company) {
       setCompanyName(company);
     } else {
-      Router.replace("/home");
+      Router.replace("/home/dashboard");
     }
   }, []);
   const handleSubmit = (e) => {
