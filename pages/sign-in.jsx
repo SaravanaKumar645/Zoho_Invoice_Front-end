@@ -59,7 +59,7 @@ export const Signin = () => {
         localStorage.setItem("token", accessToken);
         if (companyDetails) {
           localStorage.setItem("company", JSON.stringify(companyDetails));
-          Router.replace("/home");
+          Router.replace("/home/dashboard");
         } else {
           Router.replace("/organizationsetup");
         }

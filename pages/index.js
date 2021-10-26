@@ -16,7 +16,7 @@ export function LandingPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      Router.replace("/home");
+      Router.replace("/home/dashboard");
     }
     //localStorage.setItem("token", "whbbebeid3e ejwc ckjxbbxebdiebfebfekd");
     // axios
