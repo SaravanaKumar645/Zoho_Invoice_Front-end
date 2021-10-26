@@ -5,7 +5,7 @@ import countriesList from "../../public/JSON/countrieslist.json";
 import languagesList from "../../public/JSON/languagesList.json";
 import currencyList from "../../public/JSON/currencyList.json";
 import Router from "next/router";
-export default function newCustomer() {
+export default function NewCustomer() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const company = JSON.parse(localStorage.getItem("company"));
