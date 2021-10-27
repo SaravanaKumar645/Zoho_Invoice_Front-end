@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   searchdrop: {
     cursor: "pointer",
-    zIndex:99,
+    zIndex: 99,
   },
 }));
 const Search = styled("div")(({ theme }) => ({
@@ -56,7 +56,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  zIndex:0,
+  zIndex: 0,
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
@@ -178,7 +178,12 @@ export default function Appbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar className={classes.root} position="static" elevation={0}>
+      <AppBar
+        className={classes.root}
+        position="static"
+        elevation={0}
+        color="inherit"
+      >
         <Toolbar>
           <IconButton
             size="large"
@@ -228,31 +233,29 @@ export default function Appbar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton size="small"
-              aria-label="coding"
-              color="inherit">
-                Codingmart <ArrowDropDown/>
+            <IconButton size="small" aria-label="coding" color="inherit">
+              Codingmart <ArrowDropDown />
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <img src="https://img.icons8.com/material-outlined/24/000000/appointment-reminders--v1.png"/>
+              <img src="https://img.icons8.com/material-outlined/24/000000/appointment-reminders--v1.png" />
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-gear-setting-flatart-icons-outline-flatarticons-1.png"/>
+              <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/24/000000/external-gear-setting-flatart-icons-outline-flatarticons-1.png" />
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <img src="https://img.icons8.com/material-outlined/24/000000/help.png"/>
+              <img src="https://img.icons8.com/material-outlined/24/000000/help.png" />
             </IconButton>
             <IconButton
               size="large"

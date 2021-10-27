@@ -142,7 +142,6 @@ function Items() {
         }}
       >
         <p>Goods and Services, if they have a price tag, put them here.</p>
-        <iframe src="https://www.youtube.com/watch?v=AI0qj7X8frA" />
       </div>
     </div>
   );
